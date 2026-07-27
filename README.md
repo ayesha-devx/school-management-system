@@ -270,19 +270,6 @@ npx prisma db seed
 - Operations are validated on the server inside Prisma database transactions.
 - CORS policies limit cross-origin requests specifically to the configured `FRONTEND_URL` origin.
 
----
-
 ## 👩‍💻 Author
 
-**Ayesha Topiwala**  
-*Computer Engineering Student & Full-Stack Web Developer*
-
-- **GitHub**: [@ayesha-devx](https://github.com/ayesha-devx)  
-- **LinkedIn**: [Ayesha Topiwala](https://www.linkedin.com/in/ayesha-topiwala-b70a20369)  
-- **Portfolio**: [ayesha-portfolio-rkf9.vercel.app](https://ayesha-portfolio-rkf9.vercel.app)
-
----
-
-Built with React, Node.js, Express, Prisma and PostgreSQL.
-
-⭐ *If you found this project useful, consider starring the repository.*
+**Ayesha Topiwala**
