@@ -6,7 +6,12 @@ const schoolRoutes = require('./routes/schoolRoutes');
 const app = express();
 
 // Global Middleware
-app.use(cors());
+const frontendOrigin = process.env.FRONTEND_URL || 'http://localhost:5173';
+app.use(cors({
+  origin: frontendOrigin,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Routes
