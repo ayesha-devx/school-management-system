@@ -279,81 +279,82 @@ function App() {
   }
 
   // 3. Normal State
+  // 3. Normal State
   return (
-    <div className="flex flex-col min-h-screen bg-[#f8fafc]">
+    <div className="flex flex-col min-h-screen bg-[#f8fafc] w-full overflow-x-hidden">
       <Header backendStatus={backendStatus} activeSection={activeSection} onNavigate={onNavigate} />
       
-      <main className="flex-grow max-w-7xl w-full mx-auto px-6 py-8 flex flex-col gap-8">
+      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 md:py-8 flex flex-col gap-6 md:gap-8">
         {activeSection === 'dashboard' && (
           <>
             {/* Banner with modern Indigo/Purple gradient */}
-            <section className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-indigo-900 to-slate-900 text-white rounded-2xl p-8 md:p-10 shadow-md">
+            <section className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-indigo-900 to-slate-900 text-white rounded-2xl p-6 md:p-10 shadow-md">
               <div className="relative z-10 max-w-2xl text-left">
-                <span className="inline-block bg-white/10 backdrop-blur-md text-indigo-200 text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full mb-3">
+                <span className="inline-block bg-white/10 backdrop-blur-md text-indigo-200 text-[9px] md:text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full mb-3">
                   Academic Control Center
                 </span>
-                <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-2">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-2">
                   {schoolName}
                 </h1>
-                <p className="text-slate-300 text-sm md:text-base font-normal leading-relaxed">
+                <p className="text-slate-300 text-xs sm:text-sm md:text-base font-normal leading-relaxed">
                   Real-time monitoring of classrooms, current enrollment thresholds, and unique student distributions across class profiles.
                 </p>
               </div>
               {/* Subtle decorative circles */}
-              <div className="absolute right-[-10%] top-[-30%] w-[350px] h-[350px] opacity-10 pointer-events-none">
-                <div className="w-full h-full rounded-full border-[40px] border-indigo-500"></div>
+              <div className="absolute right-[-10%] top-[-30%] w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] opacity-10 pointer-events-none">
+                <div className="w-full h-full rounded-full border-[30px] sm:border-[40px] border-indigo-500"></div>
               </div>
             </section>
 
             {/* Premium Dashboard Quick Stats */}
-            <section className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-blue-50 text-blue-600">
-                  <BookOpen className="w-6 h-6" />
+            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+              <div className="bg-white border border-slate-200 rounded-xl p-4 md:p-5 flex items-center gap-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center bg-blue-50 text-blue-600 shrink-0">
+                  <BookOpen className="w-5.5 h-5.5 md:w-6 md:h-6" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Total Classes</span>
-                  <span className="text-2xl font-bold text-slate-800">{totalClasses}</span>
+                  <span className="text-[10px] md:text-[11px] text-slate-400 font-bold uppercase tracking-wider">Total Classes</span>
+                  <span className="text-xl md:text-2xl font-bold text-slate-800">{totalClasses}</span>
                 </div>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-emerald-50 text-emerald-600">
-                  <Users className="w-6 h-6" />
+              <div className="bg-white border border-slate-200 rounded-xl p-4 md:p-5 flex items-center gap-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center bg-emerald-50 text-emerald-600 shrink-0">
+                  <Users className="w-5.5 h-5.5 md:w-6 md:h-6" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Total Enrollment</span>
-                  <span className="text-2xl font-bold text-slate-800">{totalEnrollment}</span>
+                  <span className="text-[10px] md:text-[11px] text-slate-400 font-bold uppercase tracking-wider">Total Enrollment</span>
+                  <span className="text-xl md:text-2xl font-bold text-slate-800">{totalEnrollment}</span>
                 </div>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-xl p-5 flex items-center gap-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-purple-50 text-purple-600">
-                  <UserCheck className="w-6 h-6" />
+              <div className="bg-white border border-slate-200 rounded-xl p-4 md:p-5 flex items-center gap-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md col-span-1 sm:col-span-2 md:col-span-1">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center bg-purple-50 text-purple-600 shrink-0">
+                  <UserCheck className="w-5.5 h-5.5 md:w-6 md:h-6" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Unique Students</span>
-                  <span className="text-2xl font-bold text-slate-800">{totalUniqueStudents}</span>
+                  <span className="text-[10px] md:text-[11px] text-slate-400 font-bold uppercase tracking-wider">Unique Students</span>
+                  <span className="text-xl md:text-2xl font-bold text-slate-800">{totalUniqueStudents}</span>
                 </div>
               </div>
             </section>
 
             {/* Classes Card Grid */}
-            <section className="flex flex-col gap-5">
-              <div className="flex justify-between items-center border-l-4 border-indigo-600 pl-3 text-left">
+            <section className="flex flex-col gap-4 md:gap-5">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-0 border-l-4 border-indigo-600 pl-3 text-left">
                 <div>
-                  <h2 className="text-xl font-bold text-slate-800">Classrooms</h2>
-                  <p className="text-xs text-slate-400 font-medium">Overview of current cohorts and registered student metrics</p>
+                  <h2 className="text-lg md:text-xl font-bold text-slate-800">Classrooms</h2>
+                  <p className="text-[11px] md:text-xs text-slate-400 font-medium">Overview of current cohorts and registered student metrics</p>
                 </div>
                 <button 
                   onClick={() => setIsOpenModal(true)}
-                  className="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold text-xs px-4 py-2 rounded-lg shadow-sm transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow-sm transition-colors cursor-pointer flex items-center justify-center gap-1.5 self-start sm:self-auto w-full sm:w-auto"
                 >
                   <span>+ Register Student</span>
                 </button>
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
                 {classes.map((classItem) => (
                   <ClassCard 
                     key={classItem.id} 
@@ -368,44 +369,46 @@ function App() {
         )}
 
         {activeSection === 'students' && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm text-left">
-            <h2 className="text-xl font-bold text-slate-800 mb-2">All Students Directory</h2>
-            <p className="text-xs text-slate-400 font-medium mb-6">List of unique students registered across all school classes</p>
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm text-left w-full overflow-hidden">
+            <h2 className="text-lg md:text-xl font-bold text-slate-800 mb-1 sm:mb-2">All Students Directory</h2>
+            <p className="text-[11px] md:text-xs text-slate-400 font-medium mb-6">List of unique students registered across all school classes</p>
             {/* Student Table in Read Only for global directory as requested */}
-            <div className="w-full overflow-x-auto">
-              <table className="w-full border-collapse text-left">
-                <thead>
-                  <tr>
-                    <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-2 px-3 border-b border-slate-100">Student ID</th>
-                    <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-2 px-3 border-b border-slate-100">Name</th>
-                    <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-2 px-3 border-b border-slate-100">Data</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allStudents.map((st) => (
-                    <tr key={st.id} className="hover:bg-slate-50/50 transition-colors duration-150">
-                      <td className="py-2.5 px-3 border-b border-slate-100 border-dashed text-sm font-mono text-slate-500">
-                        <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-[11px] font-semibold">{st.id}</span>
-                      </td>
-                      <td className="py-2.5 px-3 border-b border-slate-100 border-dashed text-sm font-semibold text-slate-800">{st.name}</td>
-                      <td className="py-2.5 px-3 border-b border-slate-100 border-dashed text-sm text-slate-600">
-                        <span className="inline-block text-xs bg-violet-50 text-violet-700 px-2.5 py-0.5 rounded-md font-medium">{st.data}</span>
-                      </td>
+            <div className="w-full overflow-x-auto -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
+              <div className="inline-block min-w-full align-middle">
+                <table className="min-w-full border-collapse text-left">
+                  <thead>
+                    <tr>
+                      <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-3 px-3 border-b border-slate-100 whitespace-nowrap">Student ID</th>
+                      <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-3 px-3 border-b border-slate-100 whitespace-nowrap">Name</th>
+                      <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-3 px-3 border-b border-slate-100 whitespace-nowrap">Data</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {allStudents.map((st) => (
+                      <tr key={st.id} className="hover:bg-slate-50/50 transition-colors duration-150">
+                        <td className="py-3 px-3 border-b border-slate-100 border-dashed text-sm font-mono text-slate-500 whitespace-nowrap">
+                          <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-[11px] font-semibold">{st.id}</span>
+                        </td>
+                        <td className="py-3 px-3 border-b border-slate-100 border-dashed text-sm font-semibold text-slate-800 whitespace-nowrap">{st.name}</td>
+                        <td className="py-3 px-3 border-b border-slate-100 border-dashed text-sm text-slate-600 whitespace-nowrap">
+                          <span className="inline-block text-xs bg-violet-50 text-violet-700 px-2.5 py-0.5 rounded-md font-medium max-w-[150px] md:max-w-none truncate">{st.data}</span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         )}
 
         {activeSection === 'analytics' && (
-          <section className="p-8 bg-white border border-slate-200 rounded-2xl shadow-sm text-left">
-            <h2 className="text-2xl font-bold text-slate-800 mb-2">Analytics Dashboard</h2>
-            <p className="text-slate-500 mb-6">Distribution and enrollment stats overview.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                <h3 className="font-bold text-sm text-slate-700 uppercase tracking-wider mb-4">Class Size Analysis</h3>
+          <section className="p-5 sm:p-8 bg-white border border-slate-200 rounded-2xl shadow-sm text-left w-full">
+            <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-1 sm:mb-2">Analytics Dashboard</h2>
+            <p className="text-xs md:text-sm text-slate-500 mb-6">Distribution and enrollment stats overview.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+              <div className="bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-100">
+                <h3 className="font-bold text-xs sm:text-sm text-slate-700 uppercase tracking-wider mb-4">Class Size Analysis</h3>
                 <div className="space-y-3">
                   {classes.map(c => (
                     <div key={c.id} className="flex justify-between items-center text-sm">
@@ -415,8 +418,8 @@ function App() {
                   ))}
                 </div>
               </div>
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                <h3 className="font-bold text-sm text-slate-700 uppercase tracking-wider mb-4">Integrity Constraints</h3>
+              <div className="bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-100">
+                <h3 className="font-bold text-xs sm:text-sm text-slate-700 uppercase tracking-wider mb-4">Integrity Constraints</h3>
                 <div className="space-y-3 text-xs font-semibold text-slate-600">
                   <div className="flex justify-between">
                     <span>Min students per class:</span>
@@ -433,25 +436,25 @@ function App() {
         )}
 
         {activeSection === 'class-view' && selectedClass && (
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm text-left">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5 mb-6">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm text-left w-full overflow-hidden">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-5 mb-6">
               <div>
                 <button 
                   onClick={() => setActiveSection('dashboard')} 
-                  className="mb-4 inline-flex items-center gap-2 px-4 py-2 border border-slate-200 hover:border-indigo-200 bg-slate-50 hover:bg-indigo-50 text-indigo-700 hover:text-indigo-800 font-bold text-sm rounded-xl transition-all duration-200 shadow-xs cursor-pointer group"
+                  className="mb-3 inline-flex items-center gap-2 px-3 py-1.5 border border-slate-200 hover:border-indigo-200 bg-slate-50 hover:bg-indigo-50 text-indigo-700 hover:text-indigo-800 font-bold text-xs rounded-lg transition-all duration-200 shadow-xs cursor-pointer group"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                   </svg>
                   <span>Back to Dashboard</span>
                 </button>
-                <h2 className="text-2xl font-bold text-slate-800">{selectedClass.name} Students</h2>
-                <p className="text-xs text-slate-400 font-medium">All student records enrolled in this class profile</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800">{selectedClass.name} Students</h2>
+                <p className="text-[11px] sm:text-xs text-slate-400 font-medium">All student records enrolled in this class profile</p>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl text-center">
-                  <span className="block text-2xl font-bold font-mono">{selectedClass.students?.length || 0}</span>
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-500">Students</span>
+              <div className="flex items-center justify-between lg:justify-end gap-4 w-full lg:w-auto">
+                <div className="bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-xl text-center flex items-center gap-2 lg:block">
+                  <span className="block text-xl lg:text-2xl font-bold font-mono leading-none">{selectedClass.students?.length || 0}</span>
+                  <span className="text-[9px] lg:text-[10px] uppercase font-bold tracking-wider text-indigo-500 leading-none">Students</span>
                 </div>
                 <button 
                   onClick={() => setIsOpenModal(true)}
@@ -462,57 +465,59 @@ function App() {
               </div>
             </div>
 
-            <div className="w-full overflow-x-auto">
-              <table className="w-full border-collapse text-left">
-                <thead>
-                  <tr>
-                    <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-2 px-3 border-b border-slate-100">Student ID</th>
-                    <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-2 px-3 border-b border-slate-100">Name</th>
-                    <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-2 px-3 border-b border-slate-100">Data</th>
-                    <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-2 px-3 border-b border-slate-100 text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(selectedClass.students || []).map((st) => (
-                    <tr key={st.id} className="hover:bg-slate-50/50 transition-colors duration-150">
-                      <td className="py-2.5 px-3 border-b border-slate-100 border-dashed text-sm font-mono text-slate-500">
-                        <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-[11px] font-semibold">{st.id}</span>
-                      </td>
-                      <td className="py-2.5 px-3 border-b border-slate-100 border-dashed text-sm font-semibold text-slate-800">{st.name}</td>
-                      <td className="py-2.5 px-3 border-b border-slate-100 border-dashed text-sm text-slate-600">
-                        <span className="inline-block text-xs bg-violet-50 text-violet-700 px-2.5 py-0.5 rounded-md font-medium">{st.data}</span>
-                      </td>
-                      <td className="py-2.5 px-3 border-b border-slate-100 border-dashed text-right text-sm">
-                        {/* Edit Action Button */}
-                        <button
-                          onClick={() => {
-                            setSelectedEditStudent(st);
-                            setEditFormData({ name: st.name, data: st.data || '' });
-                            setIsOpenEditModal(true);
-                          }}
-                          className="text-slate-400 hover:text-indigo-600 p-1.5 rounded-md hover:bg-indigo-50 transition-all duration-150 cursor-pointer inline-flex items-center justify-center mr-1"
-                          title="Edit Student"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                          </svg>
-                        </button>
-                        
-                        {/* Trash icon markup inline to avoid extra dependencies/imports */}
-                        <button
-                          onClick={() => handleRemoveStudent(selectedClass.id, st.id)}
-                          className="text-slate-400 hover:text-rose-600 p-1.5 rounded-md hover:bg-rose-50 transition-all duration-150 cursor-pointer inline-flex items-center justify-center"
-                          title="Remove Student"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </button>
-                      </td>
+            <div className="w-full overflow-x-auto -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
+              <div className="inline-block min-w-full align-middle">
+                <table className="min-w-full border-collapse text-left">
+                  <thead>
+                    <tr>
+                      <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-3 px-3 border-b border-slate-100 whitespace-nowrap">Student ID</th>
+                      <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-3 px-3 border-b border-slate-100 whitespace-nowrap">Name</th>
+                      <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-3 px-3 border-b border-slate-100 whitespace-nowrap">Data</th>
+                      <th className="text-[11px] font-bold uppercase text-slate-400 tracking-wider py-3 px-3 border-b border-slate-100 text-right whitespace-nowrap">Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {(selectedClass.students || []).map((st) => (
+                      <tr key={st.id} className="hover:bg-slate-50/50 transition-colors duration-150">
+                        <td className="py-3 px-3 border-b border-slate-100 border-dashed text-sm font-mono text-slate-500 whitespace-nowrap">
+                          <span className="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-[11px] font-semibold">{st.id}</span>
+                        </td>
+                        <td className="py-3 px-3 border-b border-slate-100 border-dashed text-sm font-semibold text-slate-800 whitespace-nowrap">{st.name}</td>
+                        <td className="py-3 px-3 border-b border-slate-100 border-dashed text-sm text-slate-600 whitespace-nowrap">
+                          <span className="inline-block text-xs bg-violet-50 text-violet-700 px-2.5 py-0.5 rounded-md font-medium max-w-[150px] md:max-w-none truncate">{st.data}</span>
+                        </td>
+                        <td className="py-3 px-3 border-b border-slate-100 border-dashed text-right text-sm whitespace-nowrap">
+                          {/* Edit Action Button */}
+                          <button
+                            onClick={() => {
+                              setSelectedEditStudent(st);
+                              setEditFormData({ name: st.name, data: st.data || '' });
+                              setIsOpenEditModal(true);
+                            }}
+                            className="text-slate-400 hover:text-indigo-600 p-1.5 rounded-md hover:bg-indigo-50 transition-all duration-150 cursor-pointer inline-flex items-center justify-center mr-1"
+                            title="Edit Student"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                          </button>
+                          
+                          {/* Trash icon markup inline to avoid extra dependencies/imports */}
+                          <button
+                            onClick={() => handleRemoveStudent(selectedClass.id, st.id)}
+                            className="text-slate-400 hover:text-rose-600 p-1.5 rounded-md hover:bg-rose-50 transition-all duration-150 cursor-pointer inline-flex items-center justify-center"
+                            title="Remove Student"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         )}
@@ -520,8 +525,8 @@ function App() {
 
       {/* Add Student Modal */}
       {isOpenModal && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center z-50">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 max-w-md w-full shadow-xl mx-4 text-left">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6 max-w-md w-full shadow-xl text-left my-auto">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
               <h3 className="font-bold text-lg text-slate-800">Register Student</h3>
               <button 
@@ -550,7 +555,7 @@ function App() {
                     required 
                     value={formData.classId} 
                     onChange={handleFormChange}
-                    className="border border-slate-200 p-2.5 rounded-lg text-sm bg-white"
+                    className="border border-slate-200 p-2.5 rounded-lg text-sm bg-white w-full"
                   >
                     <option value="">Select a classroom...</option>
                     {classes.map(c => (
@@ -568,7 +573,7 @@ function App() {
                     placeholder="e.g. STD-112"
                     value={formData.studentCode} 
                     onChange={handleFormChange}
-                    className="border border-slate-200 p-2.5 rounded-lg text-sm placeholder-slate-400"
+                    className="border border-slate-200 p-2.5 rounded-lg text-sm placeholder-slate-400 w-full"
                   />
                 </div>
 
@@ -581,7 +586,7 @@ function App() {
                     placeholder="e.g. John Doe"
                     value={formData.name} 
                     onChange={handleFormChange}
-                    className="border border-slate-200 p-2.5 rounded-lg text-sm placeholder-slate-400"
+                    className="border border-slate-200 p-2.5 rounded-lg text-sm placeholder-slate-400 w-full"
                   />
                 </div>
 
@@ -593,7 +598,7 @@ function App() {
                     placeholder="e.g. Active (Sports Club)"
                     value={formData.data} 
                     onChange={handleFormChange}
-                    className="border border-slate-200 p-2.5 rounded-lg text-sm placeholder-slate-400"
+                    className="border border-slate-200 p-2.5 rounded-lg text-sm placeholder-slate-400 w-full"
                   />
                 </div>
               </div>
@@ -624,8 +629,8 @@ function App() {
 
       {/* Update Student Modal */}
       {isOpenEditModal && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center z-50">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 max-w-md w-full shadow-xl mx-4 text-left">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6 max-w-md w-full shadow-xl text-left my-auto">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
               <h3 className="font-bold text-lg text-slate-800">Update Student</h3>
               <button 
@@ -653,7 +658,7 @@ function App() {
                     type="text" 
                     disabled
                     value={selectedEditStudent?.id || ''}
-                    className="border border-slate-200 p-2.5 rounded-lg text-sm bg-slate-50 text-slate-500 cursor-not-allowed"
+                    className="border border-slate-200 p-2.5 rounded-lg text-sm bg-slate-50 text-slate-500 cursor-not-allowed w-full"
                   />
                 </div>
 
@@ -665,7 +670,7 @@ function App() {
                     required 
                     value={editFormData.name} 
                     onChange={handleEditFormChange}
-                    className="border border-slate-200 p-2.5 rounded-lg text-sm"
+                    className="border border-slate-200 p-2.5 rounded-lg text-sm w-full"
                   />
                 </div>
 
@@ -676,7 +681,7 @@ function App() {
                     name="data" 
                     value={editFormData.data} 
                     onChange={handleEditFormChange}
-                    className="border border-slate-200 p-2.5 rounded-lg text-sm"
+                    className="border border-slate-200 p-2.5 rounded-lg text-sm w-full"
                   />
                 </div>
               </div>
