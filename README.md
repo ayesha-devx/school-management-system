@@ -258,8 +258,7 @@ npm run dev
 | **DATABASE_URL** | PostgreSQL connection pooler URL (Transaction Mode) |
 | **DIRECT_URL** | Direct connection URL to database for migrations (Session Mode) |
 
-> [!IMPORTANT]
-> Never commit `.env` files. They are excluded through `.gitignore`. Use `.env.example` as the configuration template.
+Note: Never commit `.env` files. They are excluded through `.gitignore`. Use `.env.example` as the configuration template.
 
 ---
 
