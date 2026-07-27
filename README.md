@@ -250,18 +250,6 @@ npm run dev
 
 ---
 
-## 🔐 Environment Variables
-
-| Variable | Description |
-|:---|:---|
-| **PORT** | The port the backend server listens to (defaults to 5000) |
-| **DATABASE_URL** | PostgreSQL connection pooler URL (Transaction Mode) |
-| **DIRECT_URL** | Direct connection URL to database for migrations (Session Mode) |
-
-Note: Never commit `.env` files. They are excluded through `.gitignore`. Use `.env.example` as the configuration template.
-
----
-
 ## 📜 Available Scripts
 
 ### Backend
