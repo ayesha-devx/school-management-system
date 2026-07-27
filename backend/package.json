@@ -1,0 +1,26 @@
+{
+  "name": "school-management-backend",
+  "version": "1.0.0",
+  "description": "Backend skeleton for School Class Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.9.0",
+    "@prisma/client": "^7.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "@prisma/config": "^7.9.0",
+    "nodemon": "^3.1.4",
+    "prisma": "^7.9.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}
