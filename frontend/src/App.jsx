@@ -722,8 +722,9 @@ function App() {
         </div>
       )}
 
-      <footer className="text-center py-8 border-t border-slate-200 text-slate-400 text-xs bg-slate-50/50 mt-auto">
-        <p>© 2026 ABC Public School Management Panel. Powered by Tailwind CSS & React.</p>
+      <footer className="text-center py-8 border-t border-slate-200 text-slate-500 text-xs bg-slate-50/50 mt-auto px-4">
+        <p className="font-medium">© 2026 ABC Public School. All rights reserved.</p>
+        <p className="text-[10px] text-slate-400 mt-1">Academic Administration & Analytics Portal</p>
       </footer>
     </div>
   );
