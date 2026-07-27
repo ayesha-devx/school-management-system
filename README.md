@@ -9,54 +9,7 @@
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vite.dev/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-> A full-stack school administration dashboard built with React, Express, Prisma, PostgreSQL, and Supabase.
-
----
-
-## 📸 Preview
-
-Add a dashboard screenshot here to showcase the application.
-
-*Future path suggested: `docs/screenshots/dashboard.png`*
-
----
-
-## ✨ Features
-
-- **Classroom Overview**: Real-time display of classrooms with enrollment count and details.
-- **Dedicated Class Records View**: Drill down into any class to see all enrolled student records (ID, Name, Status/Data) without truncation.
-- **Student Registration**: Add new students directly to a class by providing a Student Code, Name, and Status/Data.
-- **Dynamic Multi-Class Enrollment**: Reuse existing student records across multiple classes using their unique `studentCode` without database duplication.
-- **Student Update**: Modify student names and status/data fields dynamically.
-- **Class-Specific Unenrollment**: Unenroll a student from a specific class (deletes only the mapping relationship, leaving the student record intact).
-- **Global Student Directory**: View a unique list of all registered students in the system.
-- **Analytics View**: Visual summary of class sizes and database business constraint metrics.
-- **Real-Time Connectivity Status**: Real-time backend status checker indicator (Connected / Disconnected).
-
----
-
-## 🧠 Business Rules
-
-The backend dynamically validates all operations in transactional blocks before committing updates. The following constraints must be met:
-1. **Minimum Class Size**: Every class must maintain at least **5 enrolled students**.
-2. **Generic Overlap Threshold**: Every class must contain at least **2 students** who are also enrolled in at least one other class (shared student check).
-3. **Unique Student Codes**: Students are uniquely identified by `studentCode` (mapped to `id` on the frontend).
-4. **Relationship Preservation**: Unenrolling a student deletes only the Class-Student relationship (`ClassStudent`), preserving the master `Student` record.
-5. **Conflict Protection**: Prevents enrolling a student code with a name different from the existing record.
-6. **Transaction Guarantee**: Database mutations are executed inside Prisma transactions; any business rule violation triggers an automatic rollback to guarantee data integrity.
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| **Frontend** | React, Vite, Tailwind CSS, Lucide React Icons, Axios |
-| **Backend** | Node.js, Express.js, CORS |
-| **Database** | PostgreSQL |
-| **ORM** | Prisma |
-| **Database Hosting** | Supabase |
-| **API Architecture** | REST |
+A professional, full-stack school management panel designed to monitor classroom cohorts, enrollments, and unique student distributions. Built with a React frontend, Node.js/Express backend, and a PostgreSQL database hosted on Supabase, the system interfaces via Prisma ORM and enforces database-level business integrity rules inside transactional mutations.
 
 ---
 
@@ -65,7 +18,7 @@ The backend dynamically validates all operations in transactional blocks before 
 ```
 React Frontend
       ↓ (Axios / REST API)
-Express.js Backend
+Express Routes & Controllers
       ↓ (Prisma ORM)
 PostgreSQL Database (Supabase)
 ```
@@ -77,13 +30,35 @@ Class (1) ← (many) ClassStudent (many) → (1) Student
 
 ---
 
+## ✨ Features
+
+- **Classrooms Dashboard**: Real-time display of classrooms with enrollment totals.
+- **Detailed Classroom View**: Drill down into any class to see all enrolled student records (Student ID, Name, Status/Data) without truncation.
+- **Student Registration**: Register and enroll new students into a target class.
+- **Shared Student Enrollment**: Reuse existing student records across multiple classes using their unique `studentCode` without database duplication.
+- **Student Update Option**: Modify student names and status/data fields dynamically.
+- **Class-Specific Unenrollment**: Remove a student from a specific class (deletes the mapping relationship, leaving the master student record intact).
+- **Global Student Directory**: Unique, aggregate list of all registered students in the system.
+- **Analytics View**: Visual summary of class sizes and database constraint compliance metrics.
+- **Real-Time Status Indicator**: Live backend status checker (Connected / Disconnected).
+
+---
+
+## 🧠 Business Rules
+
+The backend validates all mutations in transactions before committing updates. The following constraints must be met:
+1. **Minimum Class Size**: Every class must maintain at least **5 enrolled students**.
+2. **Generic Overlap Threshold**: Every class must contain at least **2 students** who are also enrolled in at least one other class (shared student check).
+3. **Unique Student Codes**: Students are uniquely identified by `studentCode` (mapped to `id` on the frontend).
+4. **Relationship Preservation**: Unenrolling a student deletes only the Class-Student relationship (`ClassStudent`), preserving the master `Student` record.
+5. **Conflict Protection**: Enrolling a student code with a name different from the existing record is rejected.
+6. **Transaction Guarantee**: Any business rule violation triggers an automatic rollback of the transaction to guarantee data integrity.
+
+---
+
 ## 🗄️ Database Schema
 
-### Entity-Relationship Model (Prisma DSL)
-- **School**: Stores the institutional settings.
-- **Class**: Represents individual classrooms linked to a School.
-- **Student**: Holds unique student records identified by `studentCode`.
-- **ClassStudent**: Join table storing the relationship link between classes and students.
+The PostgreSQL schema is managed via Prisma and models the following entities:
 
 ```mermaid
 erDiagram
@@ -120,6 +95,19 @@ erDiagram
   Class ||--o{ ClassStudent : "contains"
   Student ||--o{ ClassStudent : "enrolled"
 ```
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React, Vite, Tailwind CSS, Lucide React Icons, Axios |
+| **Backend** | Node.js, Express.js, CORS |
+| **Database** | PostgreSQL |
+| **ORM** | Prisma |
+| **Database Hosting** | Supabase |
+| **API Architecture** | REST |
 
 ---
 
@@ -177,7 +165,7 @@ school-management/
 | Method | Endpoint | Description |
 |:---|:---|:---|
 | **GET** | `/api/health` | Health check endpoint |
-| **GET** | `/api/school` | Get school name, classes, and enrolled students |
+| **GET** | `/api/school` | Get school details, classes, and enrolled students |
 | **GET** | `/api/classes` | Get all classrooms |
 | **GET** | `/api/classes/:classId` | Get class details by ID |
 | **GET** | `/api/classes/:classId/students` | Get students enrolled in a specific class |
@@ -189,13 +177,13 @@ school-management/
 
 ## 🌱 Database Seeding
 
-The database is populated with realistic academic data containing realistic Indian names (such as *Aarav Sharma* or *Ananya Singh*) and activity statuses. It generates:
-- Class 1: ~30 students
-- Class 2: ~35 students
-- Class 3: ~32 students
-- Overlapping students linking across different classes to satisfy the minimum of 2 shared students constraint.
+The seed script (`backend/prisma/seed.js`) populates the database with realistic academic data containing unique Indian names and club memberships, mapping to the following targets:
+- **Class 1**: ~30 students
+- **Class 2**: ~35 students
+- **Class 3**: ~32 students
+- **Overlapping Students**: Creates students shared across multiple classes to satisfy the generic overlap rule.
 
-Seeding is run via:
+Execute seeding using:
 ```bash
 npx prisma db seed
 ```
@@ -204,7 +192,7 @@ npx prisma db seed
 
 ## 🛡️ Backend Validation Example
 
-If you attempt to unenroll a student which would drop that class's total enrollment count to `4` (violating the minimum size limit of 5), the controller catches this constraint failure inside the transaction, throws a validation error, and rolls back the database. The client receives a `400 Bad Request` with:
+If unenrolling a student from a class drops the class size to `4` (violating the minimum limit of 5), the controller rejects the request inside a transaction, rolls back the query, and returns a `400 Bad Request`:
 ```json
 {
   "success": false,
@@ -232,23 +220,23 @@ cd school-management-system
 cd backend
 npm install
 ```
-Copy `.env.example` to `.env`:
+Configure your environment file:
 - Windows: `copy .env.example .env`
 - Mac/Linux: `cp .env.example .env`
 
-Configure the environment variables in `.env`:
+Edit `.env` and configure your credentials:
 ```env
 PORT=5000
 DATABASE_URL="postgresql://USERNAME:PASSWORD@HOST:6543/DATABASE_NAME?pgbouncer=true"
 DIRECT_URL="postgresql://USERNAME:PASSWORD@HOST:5432/DATABASE_NAME?schema=public"
 ```
 
-Apply database migrations and seed data:
+Sync database and run seeding:
 ```bash
 npx prisma db push
 npx prisma db seed
 ```
-Run the development server:
+Start backend:
 ```bash
 npm run dev
 ```
@@ -289,16 +277,8 @@ npm run dev
 
 ## 🔒 Security
 - Database connection details are excluded from Git using `.gitignore`.
-- Database error logs are safely structured in controllers to avoid exposing server credentials.
-- Business constraint rules are enforced strictly server-side inside transactional blocks.
-
----
-
-## 🔮 Future Improvements
-- **Authentication**: Implementing JWT-based authentication and role-based access control.
-- **Search & Filter**: Adding robust search capabilities to the global directory list.
-- **Pagination**: Incorporate database paging for large class lists.
-- **Automated Testing**: Integrating Jest and Supertest suites for endpoint coverage.
+- Database error handling is structured to avoid exposing credentials or internal traces.
+- All structural mutations use transactions with strict server-side validation to ensure rollback on failure.
 
 ---
 
