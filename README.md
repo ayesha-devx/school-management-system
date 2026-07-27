@@ -24,7 +24,6 @@ A professional, full-stack school administration panel built to monitor classroo
 | **Backend API** | Render | Node.js, Express.js | [API Base Endpoint](https://school-management-system-59vl.onrender.com) |
 | **Database** | Supabase | PostgreSQL (Prisma ORM) | Cloud Database Instance |
 
-*Note: The backend is hosted on a Render free instance, so it may take 30–50 seconds to respond on the initial load after periods of inactivity.*
 
 ---
 
